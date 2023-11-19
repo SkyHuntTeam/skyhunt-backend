@@ -8,6 +8,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.HashMap;
 import java.util.LinkedList;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 class JwtServiceTest {
 
     JwtService jwtService;
@@ -30,6 +32,10 @@ class JwtServiceTest {
 
         var token = jwtService.createToken(userDetails, claims);
 
-        System.out.println(token);
+        assertNotNull(token);
+
+        assertEquals(jwtService.extractUsername(token), userDetails.getUsername());
+
+        assertFalse(jwtService.isTokenExpired(token));
     }
 }
