@@ -1,4 +1,4 @@
-package pl.edu.agh.skyhunt.exception.authentication;
+package pl.edu.agh.skyhunt.exception.security;
 
 public class InvalidAuthHeaderException extends Exception {
 
