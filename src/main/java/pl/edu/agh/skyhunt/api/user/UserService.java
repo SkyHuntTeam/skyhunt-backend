@@ -22,7 +22,11 @@ public class UserService {
 
     private final JwtService jwtService;
 
-    public User register(User user, String password) throws InvalidRegisterFormException {
+    public User register(User user, String password, boolean acceptedConsents) throws InvalidRegisterFormException {
+
+        if(!acceptedConsents) {
+            throw new InvalidRegisterFormException("User must accept consents");
+        }
 
         if(password.contains(" ") || password.length() < 4) {
             throw new InvalidRegisterFormException(

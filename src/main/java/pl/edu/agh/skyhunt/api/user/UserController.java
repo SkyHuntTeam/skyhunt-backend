@@ -25,7 +25,7 @@ public class UserController {
     public UserDto register(@RequestBody UserRegistration userRegistration) throws InvalidRegisterFormException {
 
         return mapper.map(userService.register(mapper.map(userRegistration, User.class),
-                        userRegistration.getPassword()), UserDto.class);
+                        userRegistration.getPassword(), userRegistration.acceptedConsents()), UserDto.class);
     }
 
     @PostMapping("/login")
