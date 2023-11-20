@@ -19,16 +19,25 @@ public class User implements UserDetails {
     private Long id;
 
     @Column(nullable = false)
-    private String firstName;
+    private String name;
 
     @Column(nullable = false)
-    private String lastName;
+    private String surname;
 
     @Column(unique = true, nullable = false)
     private String email;
 
     @Column(nullable = false)
     private String hashedPassword;
+
+    @Column(nullable = false)
+    private String street;
+
+    @Column(nullable = false)
+    private String postcode;
+
+    @Column(nullable = false)
+    private String country;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
