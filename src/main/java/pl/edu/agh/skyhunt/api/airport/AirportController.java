@@ -2,10 +2,7 @@ package pl.edu.agh.skyhunt.api.airport;
 
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import pl.edu.agh.skyhunt.api.airport.dto.AirportDto;
 import pl.edu.agh.skyhunt.api.airport.dto.AirportList;
 import pl.edu.agh.skyhunt.api.airport.dto.AirportSearchParams;
@@ -30,7 +27,7 @@ public class AirportController {
                 .collect(Collectors.toList()));
     }
 
-    @GetMapping("/search")
+    @PostMapping("/search")
     public AirportList search(@RequestBody AirportSearchParams airportSearchParams) {
 
         return new AirportList(airportService.searchForAirports(airportSearchParams.getQuery())
