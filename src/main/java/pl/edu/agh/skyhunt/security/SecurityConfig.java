@@ -81,7 +81,14 @@ public class SecurityConfig {
 
         http
                 .authorizeHttpRequests(config ->
-                        config.requestMatchers("/api/user/register", "/api/user/login").permitAll().anyRequest().authenticated())
+                        config.requestMatchers(
+                                "/api/user/register",
+                                "/api/user/login",
+                                "/api/test",
+                                "/api/airport",
+                                "/api/airport/search",
+                                "/api/offer/search"
+                        ).permitAll().anyRequest().authenticated())
 
                 .exceptionHandling(config ->
                         config.accessDeniedHandler((request, response, exception) ->
